@@ -14,6 +14,8 @@
 #include "EpuckNavigator.h"
 #include "LiveGraphDataWriter.h"
 
+#include "RILSetup.h"
+
 #define DEFAULT_PORT 6600
 
 
@@ -27,8 +29,6 @@ static const char* RILROBOTLIST[] = {
   EPUCK1271,
   EPUCK1302
 };
-
-
 
 
 // test setup
@@ -59,6 +59,8 @@ class EpuckPlayerClient {
     BroadcastBuffer::tTaskBroadcast mTaskBroadcasts[MAXSHOPTASK]; //!< For checking out b/c tasks
     RobotTaskSelector mRobotTaskSelector; //!< associated AFM task allocation engine
     EpuckNavigator mNavigator;
+
+    LiveGraphDataWriter mExptConfWriter;
     LiveGraphDataWriter mTaskDistWriter;
     LiveGraphDataWriter mTaskSzWriter;
     LiveGraphDataWriter mTaskProbWriter;
@@ -73,7 +75,7 @@ class EpuckPlayerClient {
     EpuckPlayerClient(char *id, char *port):\
       mClientID(id), mClientPort(atoi(port)),\
       mRobotDevice(), mShopTask(), mShopTasks(), mSHM(), mTaskBroadcasts(),\
-      mRobotTaskSelector(), mNavigator(id),\
+      mRobotTaskSelector(), mNavigator(id), mExptConfWriter(),\
       mTaskDistWriter(), mTaskSzWriter(), mTaskProbWriter(), mNormPoseWriter(),\
       mTaskSelected(false), mDoingTask(false), mTaskDone(false),\
       mSelectedTask(-1){}
@@ -104,6 +106,7 @@ class EpuckPlayerClient {
 
     //! LiveGraph logs
     void InitLogFiles();
+    void LogExptConfig(); // Robot id, player port, AFM learn/forget
     void LogDistToTasks();
     void LogSensitizations();
     void LogTaskProbabilities();

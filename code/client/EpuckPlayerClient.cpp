@@ -39,7 +39,7 @@ void THISCLASS::InitRobotDevice()
 void THISCLASS::InitShopTasks(int taskcount)
 {
   for(int i=0; i < taskcount ; i++){
-        mShopTask.SetDefaults(i, INIT_MATERIAL_COUNT, INIT_URGENCY, DLETA_URGENCY);
+        mShopTask.SetDefaults(i, INIT_MATERIAL_COUNT, INIT_URGENCY, DELTA_URGENCY);
         mShopTasks.push_back(mShopTask) ;
         printf("@ClientMain: Added %d shop task\n", i);
   }
@@ -266,14 +266,64 @@ void THISCLASS::InitLogFiles()
   ctx.name = "NormalizedPose";
   ctx.desc = "Robot normalized pose in global broadcast experiment";
   ctx.label = "TimeStamp;StepCounter;X;Y;Theta";
+  mNormPoseWriter.InitDataFile(objtype, &ctx);
 
-
-  mNormPoseWriter.InitDataFile(objtype, &ctx);;
+  /* Save Static Expt. Config */
+  ctx.name = "ExptStaticConfig";
+  ctx.desc = "Configuartaion for current expt.";
+  ctx.label = "TimeStamp;StepCounter";
+  mExptConfWriter.InitDataFile(objtype, &ctx);
 
 }
 
+void THISCLASS::LogExptConfig()
+{
+  char buff[128];
+  sprintf(buff, "RobotID: %s \n Player server port: %d \n\n",\
+   mClientID, mClientPort);
+  std::string comment = mExptConfWriter.GetTimeStamp();
+  comment.append(buff);
+
+  comment.append("[AFM Parameters for Robots]");
+  sprintf(buff, "Init Task Sensitization: %.2f\n", INIT_SENSITIZATION);
+  comment.append(buff);
+  sprintf(buff, "Task Learn Rate: %.2f\n", INIT_LEARN_RATE);
+  comment.append(buff);
+  sprintf(buff, "Task Forget Rate: %.2f\n", INIT_LEARN_RATE);
+  comment.append(buff);
+
+  comment.append("[AFM Parameters for Tasks]");
+  sprintf(buff, "Task Initial Urgency: %.2f\n", INIT_URGENCY);
+  comment.append(buff);
+  sprintf(buff, "Task Delta Urgency: %.2f\n", DELTA_URGENCY);
+  comment.append(buff);
+
+  comment.append("[AFM Misc. Parameters ]");
+  sprintf(buff, "Task Delta Distance: %.2f\n", DELTA_DISTANCE);
+  comment.append(buff);
+
+  comment.append("[Task Navigation Parameters]");
+  sprintf(buff, "Total Tasks: %d\n", MAXSHOPTASK);
+  comment.append(buff);
+  // task centers
+  for (int i=0; i < MAXSHOPTASK; i++) {
+    sprintf(buff, "Task % center [%.0f, %0.f]", i,
+      mShopTasks.at(i).mCenter.x, mShopTasks.at(i).mCenter.y);
+      comment.append(buff);
+  }
+  sprintf(buff, "Task Radius: %.2f\n", TASK_RADIUS);
+  comment.append(buff);
+  sprintf(buff, "Task Cone Angle: %.2f\n", TASK_CONE_ANGLE);
+  comment.append(buff);
+
+  //add comment
+  mExptConfWriter.AppendComment(comment);
+}
+
+
 void THISCLASS::LogDistToTasks()
 {
+
 }
 
 void THISCLASS::LogSensitizations()
