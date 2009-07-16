@@ -1,0 +1,478 @@
+# depslib dependency file v1.0
+1247586511 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/ClientMain.cpp
+	"ClientMain.h"
+
+1247586514 /home/newport-ril/afm-global-expt/epuckclient/code/client/ClientMain.h
+	<string>
+	<cstdlib>
+	<iostream>
+	<libplayerc++/playerc++.h>
+	<boost/interprocess/managed_shared_memory.hpp>
+	<boost/interprocess/sync/interprocess_semaphore.hpp>
+	"EpuckPlayerClient.h"
+	"RobotDevice.h"
+	"SHMConfig.h"
+	"Sleep.h"
+	"EpuckNavigator.h"
+
+1221919298 /usr/include/player-2.0/libplayerc++/playerc++.h
+	<cmath>
+	<string>
+	<list>
+	"libplayerc/playerc.h"
+	"libplayerc++/utility.h"
+	"libplayerc++/playerc++config.h"
+	"libplayerc++/playerclient.h"
+	"libplayerc++/playererror.h"
+	"libplayerc++/clientproxy.h"
+	<boost/signal.hpp>
+	<boost/bind.hpp>
+	<boost/thread/mutex.hpp>
+	<boost/thread/thread.hpp>
+	<boost/thread/xtime.hpp>
+
+1221919148 /usr/include/player-2.0/libplayerc/playerc.h
+	<stdio.h>
+	<sys/types.h>
+	<netinet/in.h>
+	<libplayercore/player.h>
+	<libplayercore/playercommon.h>
+	<libplayercore/error.h>
+	<libplayerxdr/playerxdr.h>
+
+1221919006 /usr/include/player-2.0/libplayercore/player.h
+	"playerconfig.h"
+
+1221919006 /usr/include/player-2.0/libplayercore/playerconfig.h
+	<sys/types.h>
+	<stdint.h>
+
+1221919006 /usr/include/player-2.0/libplayercore/playercommon.h
+	<limits.h>
+	<sys/param.h>
+	<assert.h>
+
+1221919006 /usr/include/player-2.0/libplayercore/error.h
+	<stdio.h>
+	<errno.h>
+
+1221919015 /usr/include/player-2.0/libplayerxdr/playerxdr.h
+	<rpc/types.h>
+	<rpc/xdr.h>
+	<libplayercore/player.h>
+	<libplayerxdr/functiontable.h>
+
+1221919015 /usr/include/player-2.0/libplayerxdr/functiontable.h
+
+1221919298 /usr/include/player-2.0/libplayerc++/utility.h
+
+1221919298 /usr/include/player-2.0/libplayerc++/playerc++config.h
+
+1242645953 /usr/include/player-2.0/libplayerc++/playerclient.h
+	"libplayerc++/playerc++config.h"
+	"libplayerc++/utility.h"
+	<string>
+	<list>
+	<boost/signal.hpp>
+	<boost/bind.hpp>
+	<boost/thread/mutex.hpp>
+	<boost/thread/thread.hpp>
+	<boost/thread/xtime.hpp>
+
+1221919298 /usr/include/player-2.0/libplayerc++/playererror.h
+	<string>
+	<iostream>
+
+1221919298 /usr/include/player-2.0/libplayerc++/clientproxy.h
+
+1247738348 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.h
+	<string>
+	<iostream>
+	<libplayerc++/playerc++.h>
+	"RobotDevice.h"
+	"SHMConfig.h"
+	"RobotTaskSelector.h"
+	"ShopTask.h"
+	"DataStructureShopTasks.h"
+	"EpuckNavigator.h"
+	"LiveGraphDataWriter.h"
+	"RILSetup.h"
+	"RILObjects.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.h
+	<wx/datetime.h>
+	<cv.h>
+	<map>
+	<vector>
+	"ShopTask.h"
+	"NavigationCommand.h"
+	"NavigationEvent.h"
+	"RILSetup.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/datetime.h
+	"wx/defs.h"
+	<time.h>
+	"wx/msw/wince/time.h"
+	<limits.h>
+	"wx/longlong.h"
+	"wx/dynarray.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/defs.h
+	"wx/platform.h"
+	"wx/features.h"
+	"wx/version.h"
+	"wx/dlimpexp.h"
+	"wx/debug.h"
+	<stddef.h>
+	<sys/types.h>
+	<unistd.h>
+	"wx/msw/winundef.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/platform.h
+	<stddef.h>
+	<AvailabilityMacros.h>
+	<unistd.h>
+	"wx/mac/carbon/config_xcode.h"
+	"wx/setup.h"
+	"wx/chkconf.h"
+	"wx/msw/wince/libraries.h"
+	"wx/msw/libraries.h"
+	"wx/msw/gccpriv.h"
+	<AvailabilityMacros.h>
+
+1233743652 /usr/local/lib/wx/include/gtk2-ansi-release-2.8/wx/setup.h
+
+1233743652 /usr/local/include/wx-2.8/wx/chkconf.h
+	"wx/palmos/chkconf.h"
+	"wx/msw/wince/chkconf.h"
+	"wx/msw/chkconf.h"
+	"wx/mac/chkconf.h"
+	"wx/os2/chkconf.h"
+	"wx/mgl/chkconf.h"
+	"wx/dfb/chkconf.h"
+	"wx/motif/chkconf.h"
+	"wx/x11/chkconf.h"
+	"wx/univ/chkconf.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/features.h
+
+1233743652 /usr/local/include/wx-2.8/wx/version.h
+	"wx/cpp.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/cpp.h
+
+1233743652 /usr/local/include/wx-2.8/wx/dlimpexp.h
+
+1233743652 /usr/local/include/wx-2.8/wx/debug.h
+	<assert.h>
+	<limits.h>
+	"wx/wxchar.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/wxchar.h
+	"wx/platform.h"
+	"wx/dlimpexp.h"
+	<stdio.h>
+	<stdarg.h>
+	<sys/types.h>
+	<wchar.h>
+	<wcstr.h>
+	<stdlib.h>
+	<widec.h>
+	<ctype.h>
+	<memory.h>
+	<stddef.h>
+	<stddef.h>
+	<string.h>
+	<ctype.h>
+	<tchar.h>
+	<ctype.h>
+	<ctype.h>
+	<stdio.h>
+	<wctype.h>
+	<stdio.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdio.h>
+	<time.h>
+	<time.h>
+	<string.h>
+
+1233743652 /usr/local/include/wx-2.8/wx/longlong.h
+	"wx/defs.h"
+	"wx/string.h"
+	<limits.h>
+	"wx/iosfwrap.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/string.h
+	"wx/defs.h"
+	<ctype.h>
+	<stdio.h>
+	<string.h>
+	<stdarg.h>
+	<limits.h>
+	<string.h>
+	<stdio.h>
+	<stdarg.h>
+	<limits.h>
+	<stdlib.h>
+	<strings.h>
+	<StringMgr.h>
+	"wx/wxchar.h"
+	"wx/buffer.h"
+	"wx/strconv.h"
+	"wx/beforestd.h"
+	<string>
+	"wx/afterstd.h"
+	"wx/arrstr.h"
+	"wx/iosfwrap.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/buffer.h
+	"wx/wxchar.h"
+	<stdlib.h>
+
+1233743652 /usr/local/include/wx-2.8/wx/strconv.h
+	"wx/defs.h"
+	"wx/wxchar.h"
+	"wx/buffer.h"
+	"typeinfo.h"
+	<stdlib.h>
+	"wx/fontenc.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/fontenc.h
+
+1233743652 /usr/local/include/wx-2.8/wx/beforestd.h
+
+1233743652 /usr/local/include/wx-2.8/wx/afterstd.h
+	"wx/msw/winundef.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/arrstr.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/dynarray.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/dynarray.h
+	"wx/defs.h"
+	"wx/beforestd.h"
+	<vector>
+	<algorithm>
+	"wx/afterstd.h"
+
+1233743652 /usr/local/include/wx-2.8/wx/iosfwrap.h
+	<iostream.h>
+	<iosfwd>
+	"wx/msw/winundef.h"
+
+1221505300 /usr/include/opencv/cv.h
+	<chdl.h>
+	"cxcore.h"
+	"cvtypes.h"
+	"cv.hpp"
+	"cvcompat.h"
+
+1221505299 /usr/include/opencv/cxcore.h
+	"ipl.h"
+	"ipl/ipl.h"
+	"cxtypes.h"
+	"cxerror.h"
+	"cvver.h"
+	"cxcore.hpp"
+
+1221505299 /usr/include/opencv/cxtypes.h
+	<assert.h>
+	<stdlib.h>
+	<string.h>
+	<float.h>
+	<emmintrin.h>
+	<fastmath.h>
+	<mathimf.h>
+	<math.h>
+	<ipl.h>
+	<ipl/ipl.h>
+
+1221505299 /usr/include/opencv/cxerror.h
+
+1221505299 /usr/include/opencv/cvver.h
+
+1221505299 /usr/include/opencv/cxcore.hpp
+
+1221505300 /usr/include/opencv/cvtypes.h
+	<assert.h>
+	<stdlib.h>
+
+1221505300 /usr/include/opencv/cv.hpp
+
+1221505300 /usr/include/opencv/cvcompat.h
+	<string.h>
+
+1247738080 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/ShopTask.h
+	<cv.h>
+	<map>
+	<vector>
+	"RILSetup.h"
+
+1247738153 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.h
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/NavigationCommand.h
+	<cv.h>
+	<wx/string.h>
+	<wx/datetime.h>
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/NavigationEvent.h
+	<cv.h>
+	<wx/string.h>
+	<wx/datetime.h>
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/SHMConfig.h
+	<vector>
+	<string.h>
+	<boost/interprocess/managed_shared_memory.hpp>
+	<boost/interprocess/sync/interprocess_semaphore.hpp>
+	"RILSetup.h"
+	"RobotDevice.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotTaskSelector.h
+	"RobotDevice.h"
+	"DataStructureShopTasks.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructureShopTasks.h
+	<vector>
+	<cv.h>
+	"DataStructure.h"
+	"ShopTask.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructure.h
+	<wx/string.h>
+
+1247586514 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.h
+	<string>
+	<iostream>
+	<libplayerc++/playerc++.h>
+	<cv.h>
+	<math.h>
+	"RobotDevice.h"
+	"SHMConfig.h"
+	"Sleep.h"
+	"Util.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Sleep.h
+	<time.h>
+	<cstdio>
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Util.h
+	<math.h>
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/LiveGraphDataWriter.h
+	<cstdlib>
+	<fstream>
+	<time.h>
+	<string>
+
+1247586511 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.cpp
+	"EpuckNavigator.h"
+
+1247586511 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.cpp
+	"EpuckPlayerClient.h"
+	<cstdlib>
+	"Sleep.h"
+	"Util.h"
+	<boost/interprocess/managed_shared_memory.hpp>
+	<boost/interprocess/sync/interprocess_semaphore.hpp>
+	"SHMConfig.h"
+	"ShopTask.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructure.cpp
+	"DataStructure.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructureRobotDevices.cpp
+	"DataStructureRobotDevices.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructureRobotDevices.h
+	<vector>
+	<cv.h>
+	"DataStructure.h"
+	"RobotDevice.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructureShopTasks.cpp
+	"DataStructureShopTasks.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/LiveGraphDataWriter.cpp
+	"LiveGraphDataWriter.h"
+	<ctime>
+	<time.h>
+	<cstring>
+	<string>
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/NavigationCommand.cpp
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/NavigationEvent.cpp
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.cpp
+	"RILSetup.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Random.cpp
+	"Random.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Random.h
+	<cmath>
+	<cassert>
+	<iostream>
+	<fstream>
+	"RandomMersenneTwister.h"
+	"RandomNormal.h"
+	"RandomExponential.h"
+	"RandomPoisson.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomMersenneTwister.h
+	<iostream>
+	<limits.h>
+	<stdio.h>
+	<time.h>
+	<math.h>
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomNormal.h
+	<cmath>
+	<stdlib.h>
+	"RandomMersenneTwister.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomExponential.h
+	<cmath>
+	"RandomMersenneTwister.h"
+
+1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomPoisson.h
+	<cmath>
+	"RandomMersenneTwister.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomExponential.cpp
+	"RandomExponential.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomNormal.cpp
+	"RandomNormal.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomPoisson.cpp
+	"RandomPoisson.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.cpp
+	"RobotDevice.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotTaskSelector.cpp
+	"RobotTaskSelector.h"
+	<math.h>
+	<cv.h>
+	"Random.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/SHMConfig.cpp
+	"SHMConfig.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/ShopTask.cpp
+	"ShopTask.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Sleep.cpp
+	"Sleep.h"
+
+1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Util.cpp
+	"Util.h"
+
+1247738282 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILObjects.h
+	"RILSetup.h"
+

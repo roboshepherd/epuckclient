@@ -17,9 +17,10 @@
 //RIL and AFM params
 #define MAXSHOPTASK 3
 #define INIT_URGENCY 0.5
-#define DLETA_URGENCY 0.01
+#define DELTA_URGENCY 0.01
 #define INIT_MATERIAL_COUNT 10
 #define XY 2 // for task coordinates
+#define DELTA_DISTANCE 0.01 //TODO: Use it
 
 //robot device
 #define INIT_SENSITIZATION 1

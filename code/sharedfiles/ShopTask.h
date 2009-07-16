@@ -26,7 +26,7 @@ public:
 
 	//! Constructor.
 	ShopTask(): mID(-1), mMaterialCount(0),mUrgency(INIT_URGENCY),\
-	 mDeltaUrgency(DLETA_URGENCY), mStartPoint(), mEndPoint(),\
+	 mDeltaUrgency(DELTA_URGENCY), mStartPoint(), mEndPoint(),\
 	 mWorkers(), mStepCount() {}
 	//! Destructor.
 	~ShopTask() {}
