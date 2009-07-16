@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1247586511 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/ClientMain.cpp
+1247741785 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/ClientMain.cpp
 	"ClientMain.h"
 
 1247586514 /home/newport-ril/afm-global-expt/epuckclient/code/client/ClientMain.h
@@ -85,7 +85,7 @@
 
 1221919298 /usr/include/player-2.0/libplayerc++/clientproxy.h
 
-1247738368 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.h
+1247746672 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.h
 	<string>
 	<iostream>
 	<libplayerc++/playerc++.h>
@@ -99,7 +99,7 @@
 	"RILSetup.h"
 	"RILObjects.h"
 
-1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.h
+1247744851 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.h
 	<wx/datetime.h>
 	<cv.h>
 	<map>
@@ -311,7 +311,8 @@
 	<vector>
 	"RILSetup.h"
 
-1247738153 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.h
+1247747028 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.h
+	"math.h"
 
 1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/NavigationCommand.h
 	<cv.h>
@@ -331,9 +332,10 @@
 	"RILSetup.h"
 	"RobotDevice.h"
 
-1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotTaskSelector.h
+1247740850 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotTaskSelector.h
 	"RobotDevice.h"
 	"DataStructureShopTasks.h"
+	"RILSetup.h"
 
 1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructureShopTasks.h
 	<vector>
@@ -344,7 +346,7 @@
 1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructure.h
 	<wx/string.h>
 
-1247739746 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.h
+1247751205 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.h
 	<string>
 	<iostream>
 	<libplayerc++/playerc++.h>
@@ -354,6 +356,7 @@
 	"SHMConfig.h"
 	"Sleep.h"
 	"Util.h"
+	"LiveGraphDataWriter.h"
 
 1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Sleep.h
 	<time.h>
@@ -368,7 +371,7 @@
 	<time.h>
 	<string>
 
-1247739504 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.cpp
+1247749827 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.cpp
 	"EpuckNavigator.h"
 
 1247739689 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.cpp
@@ -452,10 +455,10 @@
 1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomPoisson.cpp
 	"RandomPoisson.h"
 
-1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.cpp
+1247744841 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.cpp
 	"RobotDevice.h"
 
-1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotTaskSelector.cpp
+1247741601 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotTaskSelector.cpp
 	"RobotTaskSelector.h"
 	<math.h>
 	<cv.h>

@@ -1,6 +1,8 @@
 #ifndef Header_RILSetup
 #define Header_RILSetup
 
+#include "math.h"
+
 // Size
 #define MAXROBOT 8
 
@@ -20,42 +22,16 @@
 #define DELTA_URGENCY 0.01
 #define INIT_MATERIAL_COUNT 10
 #define XY 2 // for task coordinates
-#define DELTA_DISTANCE 0.01 //TODO: Use it
+#define DELTA_DISTANCE 0.001
 
-//robot device
+//robot device's instrinsics
 #define INIT_SENSITIZATION 1
 #define INIT_LEARN_RATE 1
 #define INIT_FORGET_RATE 0.16
 
-
-// Names of SHM objects
-//static const char* RILROBOTLIST[] = {
-//  EPUCK1246,
-//  EPUCK1250,
-//  EPUCK1253,
-//  EPUCK1259,
-//  EPUCK1260,
-//  EPUCK1265,
-//  EPUCK1271,
-//  EPUCK1302
-//};
-
-
-
-//// fake
-//static float TASKS_START[MAXSHOPTASK][XY] = {
-//    {100, 500}, // task 1 start point
-//    {700, 100},
-//    {1500, 500}
-//};
-//
-//static float TASKS_END[MAXSHOPTASK][XY] = {
-//    {400, 800}, // task 1 end point
-//    {1200, 300},
-//    {1800, 700}
-//};
-//
-//static float STORE_LOCATION[XY] = {800, 1600};
-
+// for pose nomalization
+#define MAX_X 3600
+#define MAX_Y 3248
+#define MAX_THETA (2* M_PI)
 
 #endif

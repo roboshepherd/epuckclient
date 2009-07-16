@@ -66,15 +66,19 @@ public:
 	long mBroadcastStep; //! Managed by Task Broadcaster, SwisTrack CompRGE
 
   struct tTaskRecord { // task cvonfiguration and performance record of this robot
-    tTaskRecord(): mID(-1), mSensitization(INIT_SENSITIZATION), mTimesDone(0), mDuration() {}
+    tTaskRecord(): mID(-1), mSensitization(INIT_SENSITIZATION),\
+     mDist(0), mStimuli(0), mTimesDone(0), mDuration() {}
     int mID;
     double mSensitization;
+    double mDist;
+    double mStimuli;
+    double mProbability; //
     int mTimesDone; // to profile efficiency
     wxDateTime mDuration; // in this task, to profile efficiency
   };
 
   typedef std::vector<tTaskRecord> tTaskRecordVector; //
-  tTaskRecordVector mTaskRecords; //!< learning parameters, k, of all tasks
+  tTaskRecordVector mTaskRecords; //!< dynamic record of all tasks
 
 
 	//! Constructor.

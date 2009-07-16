@@ -46,9 +46,20 @@ void THISCLASS::SetupTaskLoc(CvPoint2D32f center, double radius, double coneangl
 
 void THISCLASS::UpdateCurrentPose()
 {
-  mRobotPose = mSHM.CheckoutPose(mRobotID);
-  printf("@EpuckNavigator: Robot %s PoseFound: %.0f %.0f %.2f\n", mRobotID, mRobotPose.center.x,\
+  PoseMessageType msg;
+  ++mRobotPoseStep;
+  msg = mSHM.CheckoutPoseMessage(mRobotID);
+  if (msg.step != mRobotPoseStep) {
+    mRobotPose = msg.pose;
+    mRobotPoseStep = msg.step;
+    printf("@ClientMain: Robot %s PoseFound: %.0f %.0f %.2f\n", mRobotID, mRobotPose.center.x,\
    mRobotPose.center.y, mRobotPose.orient);
+   // log norm pose
+   LogNormalizedPose();
+  } else {
+    printf("UpdateCurrentPose: pose not updated since step %ld\n", mRobotPoseStep);
+  }
+
 }
 
 void THISCLASS::UpdateTaskAngle()
@@ -498,4 +509,47 @@ double THISCLASS::Turn(PlayerClient* client, Position2dProxy* position2d, double
     position2d->ResetOdometry();
     client->Read();
     //
+}
+
+void THISCLASS::InitLogFiles()
+{
+  /* Create log file to save tasks' distance values*/
+  char s1[DATA_ITEM_LEN];
+  std::string objtype = "Robot";
+  LiveGraphDataWriter::DataContextType ctx;
+  ctx.name = "PoseAtNavigator";
+  ctx.sep = ";";
+  ctx.desc = "Robot pose used by navigator in global broadcast mode";
+  ctx.label = "TimeStamp;StepCounter; X  ; Y  ; Theta";
+
+  mNormPoseWriter.InitDataFile(objtype, &ctx);
+}
+
+std::string THISCLASS::GetDataHeader()
+{
+  //preapre data header
+  char step[DATA_ITEM_LEN];
+  std::string datahead, s;
+  // add time
+  datahead = mNormPoseWriter.GetTimeStamp();
+  datahead.append(DATA_SEP);
+  // add step
+  sprintf(step, "%ld", mRobotPoseStep); // Use this component's step count
+  datahead.append(step);
+
+  return datahead;
+}
+
+
+void THISCLASS::LogNormalizedPose()
+{
+  std::string data = GetDataHeader();
+  char buff[DATA_ITEM_LEN];
+  double xnorm = mRobotPose.center.x / MAX_X;
+  double ynorm = mRobotPose.center.y / MAX_Y;
+  double thetanorm = mRobotPose.orient / MAX_THETA;
+  sprintf(buff, ";%.0f;%0.f;%.2f", xnorm, ynorm, thetanorm);
+  data.append(buff);
+
+  mNormPoseWriter.AppendData(data);
 }

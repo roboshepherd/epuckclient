@@ -6,7 +6,7 @@
 
 #include "Random.h"
 
-#define DELTA_DISTANCE 0.001
+
 //#define INIT_LEARNING 1.0
 
 int THISCLASS::SelectTask(RobotDevice* robot,\
@@ -44,6 +44,12 @@ void THISCLASS::CalculateProbabilities(RobotDevice* robot,\
     stimuli = CalculateStimuli(learn, dist, deltadist, it->mUrgency);
     //printf("Robot %d task %d stimuli %f\n", robot->mID, taskid, stimuli);
     mStimulus.push_back(stimuli);
+
+    // save to robot's task record for logging
+    robot->mTaskRecords.at(taskid).mID = taskid;
+    robot->mTaskRecords.at(taskid).mSensitization = learn;
+    robot->mTaskRecords.at(taskid).mDist = dist;
+    robot->mTaskRecords.at(taskid).mStimuli = stimuli;
     it++;
     taskid++;
    }
@@ -67,6 +73,10 @@ void THISCLASS::CalculateProbabilities(RobotDevice* robot,\
    prob = (*itr)/sum;
    //printf("Robot %d task %d prob %f\n", robot->mID, taskid, prob);
    mProbabilities.push_back(prob);
+
+   // save into robot's task record
+   robot->mTaskRecords.at(taskid).mProbability = prob;
+
    itr++;
    taskid++;
   }

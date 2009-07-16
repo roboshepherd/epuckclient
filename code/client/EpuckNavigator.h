@@ -11,6 +11,7 @@
 #include "SHMConfig.h"
 #include "Sleep.h"
 #include "Util.h"
+#include "LiveGraphDataWriter.h"
 
 using namespace PlayerCc;
 class ShopTask;
@@ -61,11 +62,16 @@ class EpuckNavigator {
     double mThetaLocal; //!< mRobotPose.theta - mThetaDesired
 
     long mStepCount;
+    long mRobotPoseStep;
+
+    LiveGraphDataWriter mNormPoseWriter; // log poses as got from POSE_SHM
+
 
     //! Constructor.
     EpuckNavigator(char *id): mRobotID(id), mSHM(), mRobotPose(), mTaskPose(),\
      mTaskRadius(TASK_RADIUS), mTaskConeAngle(TASK_CONE_ANGLE),\
-     mXFunc(NOTSET), mYFunc(NOTSET), mCurrentQuad(Q0), mStepCount(0){}
+     mXFunc(NOTSET), mYFunc(NOTSET), mCurrentQuad(Q0), mStepCount(0),\
+     mRobotPoseStep(0), mNormPoseWriter(){}
 
     //! Destructor.
     ~EpuckNavigator(){}
@@ -79,6 +85,11 @@ class EpuckNavigator {
     // Navigation Routines
     void GoToTaskLoc(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir, long steps);
     void RandomWalk(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir, int steps);
+
+    // log pose and other events
+    void InitLogFiles();
+    std::string GetDataHeader();
+    void LogNormalizedPose();
 
     // internal fn
     bool ArrivedAtTaskLoc();

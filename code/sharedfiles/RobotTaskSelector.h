@@ -7,6 +7,8 @@
 #define NEXTSTART 0.000001 // for range creation
 #define PROB_SCALE 1000000
 
+#include "RILSetup.h" // AFM delta distance etc.
+
 //! A class that selects a task for a given RobotDevice from the given ShopTasks
 
 class RobotTaskSelector {

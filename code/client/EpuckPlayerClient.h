@@ -42,6 +42,7 @@ class EpuckPlayerClient {
     LiveGraphDataWriter mExptConfWriter;
     LiveGraphDataWriter mTaskDistWriter;
     LiveGraphDataWriter mTaskSzWriter;
+    LiveGraphDataWriter mTaskStimulusWriter;
     LiveGraphDataWriter mTaskProbWriter;
     LiveGraphDataWriter mNormPoseWriter;
     // task selection
@@ -55,7 +56,8 @@ class EpuckPlayerClient {
       mClientID(id), mClientPort(atoi(port)),\
       mRobotDevice(), mShopTask(), mShopTasks(), mSHM(), mTaskBroadcasts(),\
       mRobotTaskSelector(), mNavigator(id), mExptConfWriter(),\
-      mTaskDistWriter(), mTaskSzWriter(), mTaskProbWriter(), mNormPoseWriter(),\
+      mTaskDistWriter(), mTaskSzWriter(), mTaskStimulusWriter(), mTaskProbWriter(),\
+      mNormPoseWriter(),\
       mTaskSelected(false), mDoingTask(false), mTaskDone(false),\
       mSelectedTask(-1){}
 
@@ -83,13 +85,6 @@ class EpuckPlayerClient {
     //! Select a Task based on AFM task-allocation engine
     int GetCurrentTask();
 
-    //! LiveGraph logs
-    void InitLogFiles();
-    void LogExptConfig(); // Robot id, player port, AFM learn/forget
-    void LogDistToTasks();
-    void LogSensitizations();
-    void LogTaskProbabilities();
-    void LogNormalizedPose();
 
     //! Check E-puck State by querying hardware
     RobotDevice::eState GetClientState(PlayerClient *client);
@@ -97,6 +92,21 @@ class EpuckPlayerClient {
     //! Do Task
     CvPoint2D32f GetTaskCenter(int task);
     void DoTask(int task, PlayerClient *client, Position2dProxy *p2d, IrProxy *irp);
+
+    //! Log config/data
+    void InitLogFiles();
+    void LogExptConfig(); // Robot id, player port, AFM learn/forget
+    std::string GetDataHeader();
+    void LogTaskRecords();
+    void LogNormalizedPose();
+
+
+protected:
+    // sub fn
+    void LogDistToTasks(std::string datahead);
+    void LogSensitizations(std::string datahead);
+    void LogTaskProbabilities(std::string datahead);
+    void LogTaskStimulus(std::string datahead);
 
 };
 

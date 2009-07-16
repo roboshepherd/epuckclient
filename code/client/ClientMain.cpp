@@ -12,6 +12,8 @@ int main (int argc, char* argv[]){
     epuck.InitRobotDevice();
     epuck.InitShopTasks(MAXSHOPTASK);
     epuck.SetupStaticTaskLocations(MAXSHOPTASK, TASKS_CENTERS);
+    epuck.InitLogFiles();
+    epuck.LogExptConfig();
 
     // player client stuff
     PlayerClient* pc;
