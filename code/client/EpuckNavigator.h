@@ -17,7 +17,7 @@ class ShopTask;
 
 #define TASK_RADIUS 100 //pixel
 #define TASK_CONE_ANGLE 0.26 // 15deg
-
+#define MAX_NAV_STEP 100 // how long navigation continues
 
 //! A class that helps Epuck to perform navigation between two locations
 /// using player driver
@@ -42,7 +42,6 @@ class EpuckNavigator {
 
     eNavFuncType mXFunc;
     eNavFuncType mYFunc;
-
 
     typedef enum eQuad {
       Q0 = 0, //unknown
@@ -78,8 +77,8 @@ class EpuckNavigator {
     void UpdateNavFunc();
 
     // Navigation Routines
-    void GoToTaskLoc(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir);
-    void RandomWalk(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir, int cycle);
+    void GoToTaskLoc(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir, long steps);
+    void RandomWalk(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir, int steps);
 
     // internal fn
     bool ArrivedAtTaskLoc();

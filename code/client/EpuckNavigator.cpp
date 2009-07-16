@@ -137,20 +137,17 @@ void THISCLASS::UpdateNavFunc()
 
 }
 
-void THISCLASS::RandomWalk(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir, int cycle)
-{
-}
 
-
- void THISCLASS::GoToTaskLoc(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir)
+void THISCLASS::GoToTaskLoc(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir,\
+ long maxsteps)
  {
   double thetadiff, localangle;
 
-  int step = 0;
-  while (!ArrivedAtTaskLoc()){
-    step++;
+  mStepCount = 0;
+  while (!ArrivedAtTaskLoc() || (mStepCount < maxsteps)){
+    mStepCount++;
     printf("\n");
-    printf(">>>>>>>>>>>>>>>>GoToTaskLoc(): STEP_START **%d** \n", step);
+    printf(">>>>>>>>>>>>>>>>GoToTaskLoc(): STEP_START **%d** \n", mStepCount);
     UpdateCurrentPose();
     // calculate current taskangle
     UpdateTaskAngle();
@@ -305,12 +302,15 @@ translation:
     continue;
 }
 
-  printf(">>>>>>>>>>>>>>>>GoToTaskLoc(): STEP_END **%d** \n", step);
+  printf(">>>>>>>>>>>>>>>>GoToTaskLoc(): STEP_END **%d** \n", mStepCount);
   printf("\n");
   } // end while
 
 }
 
+void THISCLASS::RandomWalk(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir, int cycle)
+{
+}
 
 bool THISCLASS::ArrivedAtTaskLoc()
 {

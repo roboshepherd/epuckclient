@@ -227,7 +227,7 @@ void THISCLASS::DoTask(int task, PlayerClient *client,\
   CvPoint2D32f center = GetTaskCenter(task);
   mNavigator.SetupTaskLoc(center, TASK_RADIUS, TASK_CONE_ANGLE );
   printf("\n ********** TASK LOOP: START ***************\n");
-  mNavigator.GoToTaskLoc(client, p2d, irp);
+  mNavigator.GoToTaskLoc(client, p2d, irp, MAX_NAV_STEP);
   printf("\n ********** TASK LOOP: END ***************\n");
 }
 
