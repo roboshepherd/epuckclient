@@ -311,7 +311,7 @@
 	<vector>
 	"RILSetup.h"
 
-1247747028 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.h
+1247827160 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.h
 	"math.h"
 
 1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/NavigationCommand.h
@@ -346,7 +346,7 @@
 1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/DataStructure.h
 	<wx/string.h>
 
-1247751205 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.h
+1247827139 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.h
 	<string>
 	<iostream>
 	<libplayerc++/playerc++.h>
@@ -371,10 +371,10 @@
 	<time.h>
 	<string>
 
-1247749827 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.cpp
+1247751302 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.cpp
 	"EpuckNavigator.h"
 
-1247739689 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.cpp
+1247829653 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.cpp
 	"EpuckPlayerClient.h"
 	<cstdlib>
 	"Sleep.h"
@@ -476,7 +476,7 @@
 1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Util.cpp
 	"Util.h"
 
-1247738282 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILObjects.h
+1247826088 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILObjects.h
 	"RILSetup.h"
 
 1247738282 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILObjects.cpp

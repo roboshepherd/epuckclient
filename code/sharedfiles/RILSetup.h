@@ -34,4 +34,10 @@
 #define MAX_Y 3248
 #define MAX_THETA (2* M_PI)
 
+// for navigation
+#define TASK_RADIUS 100 //pixel
+#define TASK_CONE_ANGLE 0.26 // 15deg
+#define MAX_NAV_STEP 100 // how long navigation continues
+
+
 #endif

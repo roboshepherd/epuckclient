@@ -16,10 +16,6 @@
 using namespace PlayerCc;
 class ShopTask;
 
-#define TASK_RADIUS 100 //pixel
-#define TASK_CONE_ANGLE 0.26 // 15deg
-#define MAX_NAV_STEP 100 // how long navigation continues
-
 //! A class that helps Epuck to perform navigation between two locations
 /// using player driver
 

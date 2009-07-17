@@ -185,7 +185,7 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
         mSHM.CommitStateMessage(mClientID, statemsg);
         //if(task > 0){
             // navigate to task
-        //    DoTask(task, client, p2d, irp);
+            DoTask(task, client, p2d, irp);
         //} else if (task == 0){
         //    mRobotDevice.SetState(RobotDevice::RW);
             //mNavigator.RandomWalk(pc, p2d, irp);
