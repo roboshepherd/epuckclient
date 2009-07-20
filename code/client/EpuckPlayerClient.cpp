@@ -242,7 +242,7 @@ void THISCLASS::InitLogFiles()
   LiveGraphDataWriter::DataContextType ctx;
   ctx.name = "DistanceToTasks";
   ctx.sep = ";";
-  ctx.desc = "Task distances (d) in global broadcast mode";
+  ctx.desc = "Distances (d) to tasks in global broadcast mode";
   ctx.label = "TimeStamp;StepCounter";
   // preapre data label
   for(unsigned  int i=0; i< mShopTasks.size(); i++){
@@ -250,38 +250,38 @@ void THISCLASS::InitLogFiles()
     ctx.label.append(s1);
   }
 
-  mTaskDistWriter.InitDataFile(objtype, &ctx);
+  mTaskDistWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
 
   /* Create log file to save all tasks' Sensitizations*/
-  ctx.name = "TaskSensitizations";
-  ctx.desc = "Task Sensitizations in global broadcast mode";
+  ctx.name = "Sensitizations";
+  ctx.desc = "--- Task Sensitizations --- in global broadcast mode";
 
-  mTaskSzWriter.InitDataFile(objtype, &ctx);
+  mTaskSzWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
 
   /* Create log file to save all tasks' Stimulus*/
-  ctx.name = "TaskStimulus";
-  ctx.desc = "Task Stimulus in global broadcast mode";
+  ctx.name = "Stimulus";
+  ctx.desc = "--- Task Stimulus --- in global broadcast mode";
 
-  mTaskStimulusWriter.InitDataFile(objtype, &ctx);
+  mTaskStimulusWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
 
 
     /* Create log file to save all tasks' Probablities*/
   ctx.name = "TaskProbablities";
-  ctx.desc = "Task Sensitizations in global broadcast mode";
+  ctx.desc = "--- Task Probablities --- in global broadcast mode";
 
-  mTaskSzWriter.InitDataFile(objtype, &ctx);
+  mTaskProbWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
 
   /* Create log file to save all pose normalized between 0~1 */
   ctx.name = "NormalizedPose";
   ctx.desc = "Robot normalized pose in global broadcast experiment";
   ctx.label = "TimeStamp;StepCounter;X;Y;Theta";
-  mNormPoseWriter.InitDataFile(objtype, &ctx);
+  mNormPoseWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
 
   /* Create Static Expt. Config file */
-  ctx.name = "ExptStaticConfig";
+  ctx.name = "AFMGlobalExptConfig";
   ctx.desc = "Configuartaion for current expt.";
   ctx.label = "TimeStamp;StepCounter";
-  mExptConfWriter.InitDataFile(objtype, &ctx);
+  mExptConfWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
 
 }
 
@@ -364,16 +364,19 @@ void THISCLASS::LogTaskRecords()
 void THISCLASS::LogDistToTasks(std::string datahead)
 {
 
-  std::string s, data = datahead;
+  std::string  data = datahead;
+  char s[DATA_ITEM_LEN];
 
   // add dists
   RobotDevice::tTaskRecordVector::iterator it = mRobotDevice.mTaskRecords.begin();
   while (it != mRobotDevice.mTaskRecords.end()) {
-    s = it->mDist;
+    sprintf(s, "%.2f", it->mDist);
+    //printf("***DEBUG***: taskdist %s\n", s);
     data.append(DATA_SEP);
     data.append(s);
     it++;
   }
+
 
   // append data
   mTaskDistWriter.AppendData(data);
@@ -382,17 +385,17 @@ void THISCLASS::LogDistToTasks(std::string datahead)
 
 void THISCLASS::LogSensitizations(std::string datahead)
 {
-  std::string s, data = datahead;
-
+  std::string data = datahead;
+  char s1[DATA_ITEM_LEN];
   // add sensitizations
   RobotDevice::tTaskRecordVector::iterator it = mRobotDevice.mTaskRecords.begin();
   while (it != mRobotDevice.mTaskRecords.end()) {
-    s = it->mSensitization;
+    sprintf(s1, "%f", it->mSensitization);
     data.append(DATA_SEP);
-    data.append(s);
+    data.append(s1);
     it++;
   }
-
+  //printf("**DEBUG**: Task Sz data: %s \n",  data.c_str());
   ///// append data
   mTaskSzWriter.AppendData(data);
 }
@@ -400,37 +403,36 @@ void THISCLASS::LogSensitizations(std::string datahead)
 void THISCLASS::LogTaskStimulus(std::string datahead)
 {
 
-  std::string s, data = datahead;
-
+  std::string  data = datahead;
+  char s2[DATA_ITEM_LEN];
   // add stimulus
   RobotDevice::tTaskRecordVector::iterator it = mRobotDevice.mTaskRecords.begin();
   while (it != mRobotDevice.mTaskRecords.end()) {
-    s = it->mStimuli;
+    sprintf(s2, "%f", it->mStimuli);
     data.append(DATA_SEP);
-    data.append(s);
+    data.append(s2);
     it++;
   }
-
   // append data
-  mTaskDistWriter.AppendData(data);
+  mTaskStimulusWriter.AppendData(data);
 }
 
 void THISCLASS::LogTaskProbabilities(std::string datahead)
 {
 
-  std::string s, data = datahead;
-
+  std::string data = datahead;
+  char s3[DATA_ITEM_LEN];
   // add probs
   RobotDevice::tTaskRecordVector::iterator it = mRobotDevice.mTaskRecords.begin();
   while (it != mRobotDevice.mTaskRecords.end()) {
-    s = it->mProbability;
+    sprintf(s3, "%.2f", it->mProbability );
     data.append(DATA_SEP);
-    data.append(s);
+    data.append(s3);
     it++;
   }
 
   // append data
-  mTaskDistWriter.AppendData(data);
+  mTaskProbWriter.AppendData(data);
 }
 
 // Logging Pose normalized between 0~1
@@ -442,7 +444,7 @@ void THISCLASS::LogNormalizedPose()
   double xnorm = mRobotDevice.mPose.center.x / MAX_X;
   double ynorm = mRobotDevice.mPose.center.y / MAX_Y;
   double thetanorm = mRobotDevice.mPose.orient / MAX_THETA;
-  sprintf(buff, ";%.0f;%0.f;%.2f", xnorm, ynorm, thetanorm);
+  sprintf(buff, ";%.4f;%.4f;%.4f", xnorm, ynorm, thetanorm);
   data.append(buff);
 
   mNormPoseWriter.AppendData(data);

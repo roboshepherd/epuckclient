@@ -42,7 +42,7 @@ void THISCLASS::CalculateProbabilities(RobotDevice* robot,\
     dist = CalculateDist(robot->mPose.center, it->mCenter);
     learn = robot->GetSensitization(taskid);
     stimuli = CalculateStimuli(learn, dist, deltadist, it->mUrgency);
-    //printf("Robot %d task %d stimuli %f\n", robot->mID, taskid, stimuli);
+    printf("Robot %d task %d stimuli %f\n", robot->mID, taskid, stimuli);
     mStimulus.push_back(stimuli);
 
     // save to robot's task record for logging
@@ -50,6 +50,11 @@ void THISCLASS::CalculateProbabilities(RobotDevice* robot,\
     robot->mTaskRecords.at(taskid).mSensitization = learn;
     robot->mTaskRecords.at(taskid).mDist = dist;
     robot->mTaskRecords.at(taskid).mStimuli = stimuli;
+    printf("***DEBUG***: task rec  %d:, %.2f, %.2f, %.2f\n",\
+     robot->mTaskRecords.at(taskid).mID,
+     robot->mTaskRecords.at(taskid).mSensitization,
+     robot->mTaskRecords.at(taskid).mDist,
+     robot->mTaskRecords.at(taskid).mStimuli);
     it++;
     taskid++;
    }

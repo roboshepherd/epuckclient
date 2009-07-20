@@ -67,7 +67,7 @@ public:
 
   struct tTaskRecord { // task cvonfiguration and performance record of this robot
     tTaskRecord(): mID(-1), mSensitization(INIT_SENSITIZATION),\
-     mDist(0), mStimuli(0), mTimesDone(0), mDuration() {}
+     mDist(0), mStimuli(0), mProbability(0), mTimesDone(0), mDuration() {}
     int mID;
     double mSensitization;
     double mDist;
@@ -75,9 +75,10 @@ public:
     double mProbability; //
     int mTimesDone; // to profile efficiency
     wxDateTime mDuration; // in this task, to profile efficiency
-  };
+  } mTaskRecord;
 
-  typedef std::vector<tTaskRecord> tTaskRecordVector; //
+  typedef std::vector<struct tTaskRecord> tTaskRecordVector; //
+
   tTaskRecordVector mTaskRecords; //!< dynamic record of all tasks
 
 
@@ -85,7 +86,7 @@ public:
 	RobotDevice(): mID(-1), mState(NOTSET), mPose(),\
     mLearnRate(INIT_LEARN_RATE), mForgetRate(INIT_FORGET_RATE),\
     mStartTime(), mShopTask(),\
-    mStateStep(0), mPoseStep(0), mBroadcastStep(0), mTaskRecords(){
+    mStateStep(0), mPoseStep(0), mBroadcastStep(0), mTaskRecord(), mTaskRecords(0){
     }
 	//! Destructor.
 	~RobotDevice() {

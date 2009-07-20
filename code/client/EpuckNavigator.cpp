@@ -155,7 +155,7 @@ void THISCLASS::GoToTaskLoc(PlayerClient* pc, Position2dProxy* p2d, IrProxy* ir,
   double thetadiff, localangle;
 
   mStepCount = 0;
-  while (!ArrivedAtTaskLoc() || (mStepCount < maxsteps)){
+  while (!ArrivedAtTaskLoc() && (mStepCount < maxsteps)){
     mStepCount++;
     printf("\n");
     printf(">>>>>>>>>>>>>>>>GoToTaskLoc(): STEP_START **%d** \n", mStepCount);
@@ -522,7 +522,7 @@ void THISCLASS::InitLogFiles()
   ctx.desc = "Robot pose used by navigator in global broadcast mode";
   ctx.label = "TimeStamp;StepCounter; X  ; Y  ; Theta";
 
-  mNormPoseWriter.InitDataFile(objtype, &ctx);
+  mNormPoseWriter.InitDataFile(objtype, atoi(mRobotID), &ctx);
 }
 
 std::string THISCLASS::GetDataHeader()
@@ -548,7 +548,7 @@ void THISCLASS::LogNormalizedPose()
   double xnorm = mRobotPose.center.x / MAX_X;
   double ynorm = mRobotPose.center.y / MAX_Y;
   double thetanorm = mRobotPose.orient / MAX_THETA;
-  sprintf(buff, ";%.0f;%0.f;%.2f", xnorm, ynorm, thetanorm);
+  sprintf(buff, ";%.4f;%.4f;%.4f", xnorm, ynorm, thetanorm);
   data.append(buff);
 
   mNormPoseWriter.AppendData(data);

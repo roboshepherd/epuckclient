@@ -67,7 +67,10 @@ class EpuckNavigator {
     EpuckNavigator(char *id): mRobotID(id), mSHM(), mRobotPose(), mTaskPose(),\
      mTaskRadius(TASK_RADIUS), mTaskConeAngle(TASK_CONE_ANGLE),\
      mXFunc(NOTSET), mYFunc(NOTSET), mCurrentQuad(Q0), mStepCount(0),\
-     mRobotPoseStep(0), mNormPoseWriter(){}
+     mRobotPoseStep(0), mNormPoseWriter()
+    {
+      InitLogFiles();
+    }
 
     //! Destructor.
     ~EpuckNavigator(){}

@@ -30,9 +30,9 @@ void THISCLASS::SetDefaults(int id, double learn, double forget){
 }
 
 void THISCLASS::InitTaskRecords(int taskcount){
-  tTaskRecord taskrecord;
+  //tTaskRecord taskrecord;
   for(int i=0; i < taskcount; i++ ){
-    mTaskRecords.push_back(taskrecord);
+    mTaskRecords.push_back(mTaskRecord);
   }
 }
 

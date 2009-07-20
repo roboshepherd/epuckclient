@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/epuckclient-cbp" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/epuckclient-170709-v1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -18,10 +18,19 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="`pkg-config playerc++ --cflags`" />
+			<Add option="`pkg-config opencv --cflags`" />
+			<Add option="`wx-config --cflags`" />
+			<Add option="-I/usr/include/opencv" />
+			<Add directory="../code/client" />
+			<Add directory="../code/sharedfiles" />
 		</Compiler>
+		<Linker>
+			<Add option="`pkg-config playerc++ --libs`" />
+			<Add option="`wx-config --libs`" />
+		</Linker>
 		<Unit filename="../code/client/ClientMain.cpp" />
 		<Unit filename="../code/client/ClientMain.h" />
-		<Unit filename="../code/client/DBusSignalClient.h" />
 		<Unit filename="../code/client/EpuckNavigator.cpp" />
 		<Unit filename="../code/client/EpuckNavigator.h" />
 		<Unit filename="../code/client/EpuckPlayerClient.cpp" />
@@ -38,6 +47,8 @@
 		<Unit filename="../code/sharedfiles/NavigationCommand.h" />
 		<Unit filename="../code/sharedfiles/NavigationEvent.cpp" />
 		<Unit filename="../code/sharedfiles/NavigationEvent.h" />
+		<Unit filename="../code/sharedfiles/RILObjects.cpp" />
+		<Unit filename="../code/sharedfiles/RILObjects.h" />
 		<Unit filename="../code/sharedfiles/RILSetup.cpp" />
 		<Unit filename="../code/sharedfiles/RILSetup.h" />
 		<Unit filename="../code/sharedfiles/Random.cpp" />
