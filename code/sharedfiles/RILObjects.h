@@ -14,9 +14,8 @@ static const char* RILROBOTLIST[] = {
   EPUCK1302
 };
 
-// test setup
 static float TASKS_CENTERS[MAXSHOPTASK][XY] = {
-    {354, 2327}, // task 1 start point
+    {447, 511}, // task 1 start point
     {1578, 310},
     {2873, 1986}
 };
