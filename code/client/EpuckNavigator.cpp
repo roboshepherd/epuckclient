@@ -14,7 +14,7 @@
 
 // stop criteria
 #define TARGET_DIST 0.30 // /step
-#define TARGET_GOSTEP 20
+#define TARGET_GOSTEP 5
 
 //basic speed/turnrate
 #define BASIC_VX 0.06 // velocity m/s

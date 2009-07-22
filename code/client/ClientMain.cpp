@@ -44,6 +44,7 @@ workloop:
           state =  epuck.GetClientState(pc);
           // Act
           epuck.TriggerStateAction(pc, p2d, irp);
+
           // Wait a bit
           Sleep(STEP_TIME);
         }

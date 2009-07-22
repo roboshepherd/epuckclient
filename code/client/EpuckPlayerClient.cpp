@@ -132,8 +132,6 @@ int THISCLASS::GetCurrentTask()
     printf("RobotDevice and/or ShopTasks not initialized yet \n");
     return -1;
   }
-  if(!mTaskSelected){
-    if(!mDoingTask){
       // update pose and shop tasks
       UpdateCurrentPose();
       UpdateShopTaskInfo();
@@ -148,8 +146,6 @@ int THISCLASS::GetCurrentTask()
 
       // set flag
       mTaskSelected = true;
-    }
-  }
 
   return mSelectedTask;
 }
@@ -157,10 +153,11 @@ int THISCLASS::GetCurrentTask()
 
 void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, IrProxy *irp)
 {
+  mRobotDevice.mStateStep++; // increase state step
   // trigger state action: update vitual device and do shm action
   RobotDevice::eState state = GetClientState(client);
   StateMessageType statemsg;
-  statemsg.step = ++mRobotDevice.mStateStep; // tick state
+  statemsg.step = mRobotDevice.mStateStep; // tick state
   printf("========Client Step [%ld] >>> ", statemsg.step);
   int task = -1;
   switch(state){
@@ -178,14 +175,21 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
         printf("Device %s still unavailable\n", mClientID);
         break;
     case RobotDevice::AVAILABLE:
+        //before task selection
         printf("Device %s now available\n", mClientID);
+        mRobotDevice.SetState(state);
+        statemsg.state = mRobotDevice.mState;
+        mSHM.CommitStateMessage(mClientID, statemsg);
         task = GetCurrentTask();
+        //after task selection
         printf("Selected task %d now available\n", task);
+        //mRobotDevice.SetState(state); //set by GetCurrentTask
+        printf("Robot state on task %d \n", (int )mRobotDevice.mState);
         statemsg.state = mRobotDevice.mState;
         mSHM.CommitStateMessage(mClientID, statemsg);
         //if(task > 0){
             // navigate to task
-            DoTask(task, client, p2d, irp);
+        DoTask(task, client, p2d, irp);
 
         //} else if (task == 0){
         //    mRobotDevice.SetState(RobotDevice::RW);
@@ -205,7 +209,8 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
     //                }
     //                mSHM.CommitStateMessage(mClientID, statemsg);
     //                break;
-    case RobotDevice::TASK:
+    case RobotDevice::TASK: // unlikely to reach
+         printf("TriggerStateAction(): Unlikely state found \n");
         statemsg.state = mRobotDevice.mState;
         mSHM.CommitStateMessage(mClientID, statemsg);
         break;

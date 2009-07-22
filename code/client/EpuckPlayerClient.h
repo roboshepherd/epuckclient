@@ -47,8 +47,6 @@ class EpuckPlayerClient {
     LiveGraphDataWriter mNormPoseWriter;
     // task selection
     bool mTaskSelected;
-    bool mDoingTask;
-    bool mTaskDone;
     int mSelectedTask;
 
     //! Constructor.
@@ -58,7 +56,7 @@ class EpuckPlayerClient {
       mRobotTaskSelector(), mNavigator(id), mExptConfWriter(),\
       mTaskDistWriter(), mTaskSzWriter(), mTaskStimulusWriter(), mTaskProbWriter(),\
       mNormPoseWriter(),\
-      mTaskSelected(false), mDoingTask(false), mTaskDone(false),\
+      mTaskSelected(false),\
       mSelectedTask(-1){}
 
     //! Destructor.
