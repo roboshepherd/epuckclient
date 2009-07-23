@@ -15,6 +15,7 @@
 // stop criteria
 #define TARGET_DIST 0.30 // /step
 #define TARGET_GOSTEP 5
+#define TARGET_GOTIME 30 //sec
 
 //basic speed/turnrate
 #define BASIC_VX 0.06 // velocity m/s
@@ -407,9 +408,13 @@ double THISCLASS::GoAhead(PlayerClient* client, Position2dProxy* position2d, IrP
   double frontsum = 0.0f, backsum = 0.0f, dist = 0.0f;
   int avoid = 0, after_avoid = 0;
 
+  time_t time1, time2, difftime = 0;
+
   position2d->ResetOdometry();
   /* Goes TARGET_GOSTEP forward with avoiding obstacle*/
-  while(k < TARGET_GOSTEP) {
+  //while(k < TARGET_GOSTEP) {
+  time1 = GetTimeInSecond();
+  while(difftime < TARGET_GOTIME) {
     client->Read();
     // Sense Obstacle: check ir only if robot is in no avoiding condition
     for(i=0; (i < IR_COUNT) && (!avoid); i++)
@@ -470,7 +475,11 @@ double THISCLASS::GoAhead(PlayerClient* client, Position2dProxy* position2d, IrP
     client->Read();
     gone += position2d->GetXPos();
     position2d->ResetOdometry();
-     k++;
+    // counter based approach to terminate while loop
+    k++;
+    // time based approach to terminate while loop
+    time2 = GetTimeInSecond();
+    difftime = time2 - time1;
   } //end while(position2d->GetXPos() < TARGET_DIST)
 
   printf("#### Last Normal Course#: %d ####\n", j);

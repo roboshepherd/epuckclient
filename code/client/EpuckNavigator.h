@@ -6,6 +6,7 @@
 #include <libplayerc++/playerc++.h>
 #include <cv.h>
 #include <math.h>
+#include <time.h>
 
 #include "RobotDevice.h"
 #include "SHMConfig.h"
