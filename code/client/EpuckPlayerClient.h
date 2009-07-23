@@ -45,6 +45,7 @@ class EpuckPlayerClient {
     LiveGraphDataWriter mTaskStimulusWriter;
     LiveGraphDataWriter mTaskProbWriter;
     LiveGraphDataWriter mNormPoseWriter;
+    LiveGraphDataWriter mTaskUrgencyWriter;
     // task selection
     bool mTaskSelected;
     int mSelectedTask;
@@ -55,7 +56,7 @@ class EpuckPlayerClient {
       mRobotDevice(), mShopTask(), mShopTasks(), mSHM(), mTaskBroadcasts(),\
       mRobotTaskSelector(), mNavigator(id), mExptConfWriter(),\
       mTaskDistWriter(), mTaskSzWriter(), mTaskStimulusWriter(), mTaskProbWriter(),\
-      mNormPoseWriter(),\
+      mNormPoseWriter(),mTaskUrgencyWriter(),\
       mTaskSelected(false),\
       mSelectedTask(-1){}
 
@@ -105,6 +106,7 @@ protected:
     void LogSensitizations(std::string datahead);
     void LogTaskProbabilities(std::string datahead);
     void LogTaskStimulus(std::string datahead);
+    void LogTaskUrgencies(std::string datahead);
 
 };
 

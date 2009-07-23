@@ -20,14 +20,16 @@
 #define MAXSHOPTASK 3
 #define INIT_URGENCY 0.5
 #define DELTA_URGENCY 0.01
+#define DELTA_URGENCY_INC 0.01
+#define DELTA_URGENCY_DEC 0.1
 #define INIT_MATERIAL_COUNT 10
 #define XY 2 // for task coordinates
 #define DELTA_DISTANCE 0.001
 
 //robot device's instrinsics
-#define INIT_SENSITIZATION 1
-#define INIT_LEARN_RATE 1
-#define INIT_FORGET_RATE 0.16
+#define INIT_SENSITIZATION 0.1
+#define INIT_LEARN_RATE 0.1
+#define INIT_FORGET_RATE 0.016
 
 // for pose nomalization
 #define MAX_X 3600

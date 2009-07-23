@@ -16,7 +16,7 @@ void THISCLASS::SetTimeStamp()
   temp = time(NULL);
   timeptr = localtime(&temp);
 
-  rc = strftime (s, sizeof(s),"%Y%m%d-%H%M",timeptr);
+  rc = strftime (s, sizeof(s),"%Y%m%d-%H%M%S",timeptr);
   mTime = s;
   strcpy(mTimeNow, s);
   //printf("mTime set as %s\n", mTime);

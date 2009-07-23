@@ -85,7 +85,7 @@
 
 1221919298 /usr/include/player-2.0/libplayerc++/clientproxy.h
 
-1248264600 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.h
+1248353787 /home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.h
 	<string>
 	<iostream>
 	<libplayerc++/playerc++.h>
@@ -305,13 +305,13 @@
 1221505300 /usr/include/opencv/cvcompat.h
 	<string.h>
 
-1247738080 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/ShopTask.h
+1248349349 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/ShopTask.h
 	<cv.h>
 	<map>
 	<vector>
 	"RILSetup.h"
 
-1248177298 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.h
+1248351168 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RILSetup.h
 	"math.h"
 
 1247583219 /home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/NavigationCommand.h
@@ -371,10 +371,10 @@
 	<time.h>
 	<string>
 
-1248264032 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.cpp
+1248349858 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckNavigator.cpp
 	"EpuckNavigator.h"
 
-1248263518 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.cpp
+1248353223 source:/home/newport-ril/afm-global-expt/epuckclient/code/client/EpuckPlayerClient.cpp
 	"EpuckPlayerClient.h"
 	<cstdlib>
 	"Sleep.h"
@@ -455,7 +455,7 @@
 1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RandomPoisson.cpp
 	"RandomPoisson.h"
 
-1248082974 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.cpp
+1248349759 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotDevice.cpp
 	"RobotDevice.h"
 
 1248085428 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/RobotTaskSelector.cpp
@@ -467,7 +467,7 @@
 1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/SHMConfig.cpp
 	"SHMConfig.h"
 
-1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/ShopTask.cpp
+1248349886 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/ShopTask.cpp
 	"ShopTask.h"
 
 1247583219 source:/home/newport-ril/afm-global-expt/epuckclient/code/sharedfiles/Sleep.cpp

@@ -425,7 +425,7 @@ double THISCLASS::GoAhead(PlayerClient* client, Position2dProxy* position2d, IrP
         if(ir->GetRange(i) < VERY_CLOSE_DIST){
         printf(">>> Got obstacle-- near [IR%d]: %.2f\n", i, ir->GetRange(i) );
         avoid = AVOID_LOOP_COUNT;
-        k = 0; // reset main while loop to aoid obstacle for some time
+        /* k = 0; // reset main while loop to aoid obstacle for some time */
         }
     }
 

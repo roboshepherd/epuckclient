@@ -58,9 +58,12 @@ void THISCLASS::UpdateTaskSensitization(int selectedTaskID){
       mTaskRecords.at(i).mSensitization += mLearnRate;
     } else {
       mTaskRecords.at(i).mSensitization -= mForgetRate;
-      if(mTaskRecords.at(i).mSensitization < 0)
-        mTaskRecords.at(i).mSensitization = 0;
     }
+    if(mTaskRecords.at(i).mSensitization < 0)
+        mTaskRecords.at(i).mSensitization = 0;
+    if(mTaskRecords.at(i).mSensitization > 1)
+        mTaskRecords.at(i).mSensitization = 1;
+
   }
 }
 

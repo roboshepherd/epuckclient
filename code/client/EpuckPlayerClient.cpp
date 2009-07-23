@@ -39,7 +39,7 @@ void THISCLASS::InitRobotDevice()
 void THISCLASS::InitShopTasks(int taskcount)
 {
   for(int i=0; i < taskcount ; i++){
-        mShopTask.SetDefaults(i, INIT_MATERIAL_COUNT, INIT_URGENCY, DELTA_URGENCY);
+        mShopTask.SetDefaults(i, INIT_MATERIAL_COUNT, INIT_URGENCY, DELTA_URGENCY_INC);
         mShopTasks.push_back(mShopTask) ;
         printf("@ClientMain: Added %d shop task\n", i);
   }
@@ -134,12 +134,13 @@ int THISCLASS::GetCurrentTask()
   }
       // update pose and shop tasks
       UpdateCurrentPose();
-      UpdateShopTaskInfo();
+      UpdateShopTaskInfo(); //mainly task urgency
       mSelectedTask = mRobotTaskSelector.SelectTask(&mRobotDevice, &mShopTasks);
+      mRobotDevice.UpdateTaskSensitization(mSelectedTask); // for next selection
       // log task selection into task records
       LogTaskRecords();
       // convert into proper state
-      int taskstate = 0;
+      int taskstate;
       taskstate = (mSelectedTask + 1) * 100 ; // conversion to 100 scale
       mRobotDevice.mState = (RobotDevice::eState) taskstate; // As per API 2
       // log task selections
@@ -251,8 +252,8 @@ void THISCLASS::InitLogFiles()
   LiveGraphDataWriter::DataContextType ctx;
   ctx.name = "DistanceToTasks";
   ctx.sep = ";";
-  ctx.desc = "Distances (d) to tasks in global broadcast mode";
-  ctx.label = "TimeStamp;StepCounter";
+  ctx.desc = "--- Distances (d) to tasks --- in global broadcast mode";
+  ctx.label = "TimeStamp;StepCounter;SelectedTask";
   // preapre data label
   for(unsigned  int i=0; i< mShopTasks.size(); i++){
     sprintf(s1, ";Task%d", mShopTasks.at(i).mID);
@@ -279,6 +280,12 @@ void THISCLASS::InitLogFiles()
   ctx.desc = "--- Task Probablities --- in global broadcast mode";
 
   mTaskProbWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
+
+  /* Create log file to save all task urgncies between 0~1 */
+  ctx.name = "RcvdTaskUrgency";
+  ctx.desc = "--- Task Urgency rcvd. via broadcast --- in global broadcast experiment";
+  mTaskUrgencyWriter.InitDataFile(objtype, atoi(mClientID), &ctx);
+
 
   /* Create log file to save all pose normalized between 0~1 */
   ctx.name = "NormalizedPose";
@@ -348,7 +355,8 @@ std::string THISCLASS::GetDataHeader()
   datahead = mTaskDistWriter.GetTimeStamp();
   datahead.append(DATA_SEP);
   // add step
-  sprintf(step, "%ld", mRobotDevice.mStateStep); // Use this component's step count
+  sprintf(step, "%ld;%d", mRobotDevice.mStateStep,
+    mSelectedTask); // Use this component's step count
   datahead.append(step);
 
   return datahead;
@@ -457,5 +465,23 @@ void THISCLASS::LogNormalizedPose()
   data.append(buff);
 
   mNormPoseWriter.AppendData(data);
+}
+
+void THISCLASS::LogTaskUrgencies(std::string datahead)
+{
+
+  std::string data = datahead;
+  char s4[DATA_ITEM_LEN];
+  // add probs
+  DataStructureShopTasks::tShopTaskVector::iterator it = mShopTasks.begin();
+  while (it != mShopTasks.end()) {
+    sprintf(s4, "%f", it->mUrgency);
+    data.append(DATA_SEP);
+    data.append(s4);
+    it++;
+  }
+
+  // append data
+  mTaskUrgencyWriter.AppendData(data);
 }
 
