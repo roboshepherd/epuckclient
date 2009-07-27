@@ -88,10 +88,8 @@ void THISCLASS::UpdateCurrentPose()
 
 void THISCLASS::UpdateShopTaskInfo()
 {
-  printf("**Die pt1**\n");
   TaskBroadcastMessageType msg;
   msg = mSHM.CheckoutTaskBroadcastMessage(mClientID);
-  printf("**Die pt2**\n");
   if (msg.step != mRobotDevice.mBroadcastStep) {
     //mTaskBroadcasts = msg.tasks;
     mRobotDevice.mBroadcastStep = msg.step;
@@ -183,7 +181,7 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
         mSHM.CommitStateMessage(mClientID, statemsg);
         task = GetCurrentTask();
         //after task selection
-        printf("Selected task %d now available\n", task);
+        printf("Selected task: %d \n", task);
         //mRobotDevice.SetState(state); //set by GetCurrentTask
         printf("Robot state on task %d \n", (int )mRobotDevice.mState);
         statemsg.state = mRobotDevice.mState;
@@ -197,6 +195,8 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
             //mNavigator.RandomWalk(pc, p2d, irp);
         //}
         mRobotDevice.SetState(RobotDevice::AVAILABLE);
+        mRobotDevice.mStateStep++;
+        statemsg.step = mRobotDevice.mStateStep;
         statemsg.state = mRobotDevice.mState;
         mSHM.CommitStateMessage(mClientID, statemsg);
         break;
@@ -211,7 +211,7 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
     //                mSHM.CommitStateMessage(mClientID, statemsg);
     //                break;
     case RobotDevice::TASK: // unlikely to reach
-         printf("TriggerStateAction(): Unlikely state found \n");
+        printf("TriggerStateAction(): Unlikely state found \n");
         statemsg.state = mRobotDevice.mState;
         mSHM.CommitStateMessage(mClientID, statemsg);
         break;
@@ -375,6 +375,7 @@ void THISCLASS::LogTaskRecords()
   LogSensitizations(datahead);
   LogTaskStimulus(datahead);
   LogTaskProbabilities(datahead);
+  LogTaskUrgencies(datahead);
 }
 
 

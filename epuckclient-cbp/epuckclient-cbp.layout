@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="../code/client/ClientMain.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="445" topLine="0" />
+	<File name="../code/client/ClientMain.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="1618" topLine="32" />
 	</File>
-	<File name="../code/client/ClientMain.h" open="0" top="0" tabpos="0">
-		<Cursor position="111" topLine="0" />
+	<File name="../code/client/ClientMain.h" open="1" top="0" tabpos="3">
+		<Cursor position="455" topLine="0" />
 	</File>
-	<File name="../code/client/EpuckNavigator.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1533" topLine="520" />
+	<File name="../code/client/EpuckNavigator.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="15386" topLine="0" />
 	</File>
-	<File name="../code/client/EpuckNavigator.h" open="1" top="0" tabpos="5">
-		<Cursor position="331" topLine="0" />
+	<File name="../code/client/EpuckNavigator.h" open="1" top="0" tabpos="1">
+		<Cursor position="187" topLine="0" />
 	</File>
-	<File name="../code/client/EpuckPlayerClient.cpp" open="1" top="1" tabpos="13">
-		<Cursor position="5968" topLine="183" />
+	<File name="../code/client/EpuckPlayerClient.cpp" open="1" top="1" tabpos="8">
+		<Cursor position="12430" topLine="453" />
 	</File>
-	<File name="../code/client/EpuckPlayerClient.h" open="1" top="0" tabpos="12">
-		<Cursor position="3188" topLine="81" />
+	<File name="../code/client/EpuckPlayerClient.h" open="1" top="0" tabpos="4">
+		<Cursor position="1949" topLine="0" />
+	</File>
+	<File name="../code/sharedfiles/LiveGraphDataWriter.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="399" topLine="0" />
 	</File>
 	<File name="../code/sharedfiles/LiveGraphDataWriter.h" open="0" top="0" tabpos="0">
-		<Cursor position="0" topLine="24" />
+		<Cursor position="1711" topLine="24" />
 	</File>
 	<File name="../code/sharedfiles/RILObjects.h" open="0" top="0" tabpos="0">
-		<Cursor position="221" topLine="0" />
+		<Cursor position="341" topLine="0" />
 	</File>
-	<File name="../code/sharedfiles/RILSetup.h" open="1" top="0" tabpos="6">
-		<Cursor position="726" topLine="9" />
+	<File name="../code/sharedfiles/RILSetup.h" open="0" top="0" tabpos="6">
+		<Cursor position="698" topLine="0" />
 	</File>
 	<File name="../code/sharedfiles/RobotDevice.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="292" topLine="12" />
+		<Cursor position="1467" topLine="46" />
 	</File>
 	<File name="../code/sharedfiles/RobotDevice.h" open="0" top="0" tabpos="0">
-		<Cursor position="2002" topLine="9" />
+		<Cursor position="2849" topLine="65" />
 	</File>
 	<File name="../code/sharedfiles/RobotTaskSelector.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="2155" topLine="0" />
+		<Cursor position="2155" topLine="24" />
 	</File>
 	<File name="../code/sharedfiles/RobotTaskSelector.h" open="0" top="0" tabpos="0">
-		<Cursor position="1054" topLine="30" />
+		<Cursor position="1527" topLine="30" />
+	</File>
+	<File name="../code/sharedfiles/ShopTask.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="205" topLine="0" />
 	</File>
 	<File name="../code/sharedfiles/ShopTask.h" open="0" top="0" tabpos="0">
-		<Cursor position="754" topLine="11" />
+		<Cursor position="1057" topLine="14" />
+	</File>
+	<File name="../code/sharedfiles/Util.h" open="1" top="0" tabpos="5">
+		<Cursor position="823" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

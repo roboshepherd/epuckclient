@@ -35,7 +35,7 @@ static time_t GetTimeInSecond()
 
   time(&systime); /* get the system time in seconds since EPOCH */
   systm=localtime(&systime); /* and return a pointer to the time structure */
-  printf("time in seconds since EPOCH is %ld\n", systime);
+  //printf("time in seconds since EPOCH is %ld\n", systime);
   return systime;
 }
 

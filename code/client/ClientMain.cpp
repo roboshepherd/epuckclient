@@ -51,6 +51,11 @@ workloop:
 
     } catch (PlayerError pe) {
         std::cerr << pe << std::endl;
+        epuck.mRobotDevice.mStateStep++;
+        StateMessageType statemsg;
+        statemsg.step = epuck.mRobotDevice.mStateStep; // tick state
+        statemsg.state = RobotDevice::UNAVAILABLE;
+        epuck.mSHM.CommitStateMessage(epuck.mClientID, statemsg);
         goto workloop;
     } catch (interprocess_exception ipce) {
         goto workloop;
