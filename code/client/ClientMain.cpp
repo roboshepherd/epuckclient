@@ -43,7 +43,7 @@ workloop:
           // Sense device state
           state =  epuck.GetClientState(pc);
           // Act
-          epuck.TriggerStateAction(pc, p2d, irp);
+          epuck.TriggerStateAction(pc, p2d, irp, state);
 
           // Wait a bit
           Sleep(STEP_TIME);

@@ -72,8 +72,8 @@ class EpuckPlayerClient {
     void SetupStaticTaskLocations(int taskcount, float taskcenters[][XY]);
 
     //! Trigger appropriate task based on current state
-    void TriggerStateAction(PlayerClient *client,\
-      Position2dProxy *p2d, IrProxy *irp);
+    void TriggerStateAction( PlayerClient *client, Position2dProxy *p2d,\
+      IrProxy *irp, RobotDevice::eState state);
 
     //! Checkout current pose and update local robot device
     void UpdateCurrentPose();

@@ -28,8 +28,8 @@
 
 //robot device's instrinsics
 #define INIT_SENSITIZATION 0.1
-#define INIT_LEARN_RATE 0.1
-#define INIT_FORGET_RATE 0.016
+#define INIT_LEARN_RATE 0.01
+#define INIT_FORGET_RATE 0.0016
 
 // for pose nomalization
 #define MAX_X 3600

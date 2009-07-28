@@ -150,11 +150,13 @@ int THISCLASS::GetCurrentTask()
 }
 
 
-void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, IrProxy *irp)
+void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d,\
+ IrProxy *irp, RobotDevice::eState state)
 {
   mRobotDevice.mStateStep++; // increase state step
+  mRobotDevice.SetState(state);
   // trigger state action: update vitual device and do shm action
-  RobotDevice::eState state = GetClientState(client);
+  //RobotDevice::eState state = GetClientState(client);
   StateMessageType statemsg;
   statemsg.step = mRobotDevice.mStateStep; // tick state
   printf("========Client Step [%ld] >>> ", statemsg.step);
@@ -162,21 +164,19 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
   switch(state){
     case RobotDevice::NOTSET: //at the beginning
         printf("State: %d ========\n", state );
-        mRobotDevice.SetState(state);
         statemsg.state = mRobotDevice.mState;
         mSHM.CommitStateMessage(mClientID, statemsg);
         break;
     case RobotDevice::UNAVAILABLE:
         printf("State: %d ========\n", state );
-        mRobotDevice.SetState(state);
         statemsg.state = mRobotDevice.mState;
         mSHM.CommitStateMessage(mClientID, statemsg);
         printf("Device %s still unavailable\n", mClientID);
         break;
     case RobotDevice::AVAILABLE:
+    case RobotDevice::TASK:
         //before task selection
         printf("Device %s now available\n", mClientID);
-        mRobotDevice.SetState(state);
         statemsg.state = mRobotDevice.mState;
         mSHM.CommitStateMessage(mClientID, statemsg);
         task = GetCurrentTask();
@@ -194,11 +194,11 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
         //    mRobotDevice.SetState(RobotDevice::RW);
             //mNavigator.RandomWalk(pc, p2d, irp);
         //}
-        mRobotDevice.SetState(RobotDevice::AVAILABLE);
-        mRobotDevice.mStateStep++;
-        statemsg.step = mRobotDevice.mStateStep;
-        statemsg.state = mRobotDevice.mState;
-        mSHM.CommitStateMessage(mClientID, statemsg);
+//        mRobotDevice.SetState(RobotDevice::AVAILABLE);
+//        mRobotDevice.mStateStep++;
+//        statemsg.step = mRobotDevice.mStateStep;
+//        statemsg.state = mRobotDevice.mState;
+//        mSHM.CommitStateMessage(mClientID, statemsg);
         break;
     //            case RobotDevice::RW:
     //                task = mRobotTaskSelector.SelectTask(&mRobotDevice, &mShopTasks);
@@ -210,11 +210,11 @@ void THISCLASS::TriggerStateAction( PlayerClient *client, Position2dProxy *p2d, 
     //                }
     //                mSHM.CommitStateMessage(mClientID, statemsg);
     //                break;
-    case RobotDevice::TASK: // unlikely to reach
-        printf("TriggerStateAction(): Unlikely state found \n");
-        statemsg.state = mRobotDevice.mState;
-        mSHM.CommitStateMessage(mClientID, statemsg);
-        break;
+//    case RobotDevice::TASK: // unlikely to reach
+//        printf("TriggerStateAction(): Unlikely state found \n");
+//        statemsg.state = mRobotDevice.mState;
+//        mSHM.CommitStateMessage(mClientID, statemsg);
+//        break;
     default:
         printf("TriggerStateAction(): Unknown state given \n");
   }
