@@ -5,6 +5,7 @@
 #include "Sleep.h"
 #include "Util.h"
 #define STEP_TIME 3000 // 3 sec
+#define PLAYER_FREQ 5
 
 #include <boost/interprocess/managed_shared_memory.hpp>
 #include <boost/interprocess/sync/interprocess_semaphore.hpp>
@@ -17,12 +18,13 @@ using namespace boost::interprocess;
 void THISCLASS::InitClient(PlayerClient* client)
 {
         printf(">>> Start up client \n");
+//        client->SetFrequency(PLAYER_FREQ);
         //printf("--> Set Data mode: pull\n");
         client->SetDataMode(PLAYER_DATAMODE_PULL);
         //printf("---> Set Replace rule mode\n");
         client->SetReplaceRule(TRUE, PLAYER_MSGTYPE_DATA, -1, -1);
         //printf("----> Read client\n");
-        client->Read();;
+        client-> Read();
         printf("<<< Client initialized\n");
 }
 
